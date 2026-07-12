@@ -1027,7 +1027,7 @@ button, a {
    PÁGINA DE CONTACTO
    ========================================================= */
 
-.contact-page{min-height:100vh;overflow:hidden;background:var(--bg)}
+.contact-page{min-height:100vh;overflow:visible;background:var(--bg);padding-bottom:60px}
 .contact-nav{width:min(calc(100% - 40px),var(--max));height:92px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .contact-back-link{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:750}
 .contact-hero{position:relative;width:min(calc(100% - 40px),var(--max));min-height:820px;margin:0 auto;padding:82px 0 80px;display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:start}
