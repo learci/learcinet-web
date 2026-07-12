@@ -7,7 +7,7 @@ export default function ContactPage() {
       <SiteHeader />
       <main className="contact-page">
         <section className="contact-section section" id="contacto">
-          <div className="contact-panel reveal">
+          <div className="contact-panel">
             <p className="eyebrow light">Hablemos de tu proyecto</p>
             <h2>Construyamos algo que haga avanzar tu negocio.</h2>
             <p>
