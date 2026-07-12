@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "LearciNet | Soluciones digitales",
+  title: "LearciNet | Estudio Digital",
   description:
     "Diseño web, automatización, dashboards, soporte tecnológico y soluciones digitales para empresas y emprendedores.",
 };
