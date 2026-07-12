@@ -1,11 +1,43 @@
 "use client";
 
-export default function Home() {
+import { useEffect } from "react";
+import SiteHeader from "@/components/SiteHeader";
+import { siteData } from "@/data/siteData";
+
+function ArrowUpRight({ size = 18 }) {
   return (
-    <main>
-      <h1>Prueba de compilación</h1>
-      <p>Si esta página funciona, el error viene de otro componente.</p>
-    </main>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M7 17 17 7M8 7h9v9"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ServiceIcon({ index }) {
+  const icons = [
+    "M4 7h16M4 12h16M4 17h16",
+    "M4 4h16v16H4z",
+    "M12 4l8 16H4z",
+    "M4 4h16M4 12h10M4 20h16",
+    "M4 4h16M4 12h16M4 20h16",
+    "M12 4l8 8-8 8-8-8 8-8z",
+  ];
+
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d={icons[index % icons.length]}
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

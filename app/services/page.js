@@ -7,8 +7,13 @@ import SiteHeader from "@/components/SiteHeader";
 function ArrowUpRight({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M7 17 17 7M8 7h9v9"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -16,8 +21,13 @@ function ArrowUpRight({ size = 18 }) {
 function ArrowLeft({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="m15 18-6-6 6-6M9 12h11" stroke="currentColor" strokeWidth="1.8"
-        strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="m15 18-6-6 6-6M9 12h11"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -33,12 +43,29 @@ function Plus({ open }) {
 
 function ServiceGlyph({ index }) {
   const paths = [
-    <><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M7 8h10M7 12h6M9 22h6"/></>,
-    <><path d="M5 4h14a2 2 0 0 1 2 2v12H3V6a2 2 0 0 1 2-2Z"/><path d="M8 22h8M12 18v4M7 9h10"/></>,
-    <><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/><path d="m3 7 5-3 5 5 7-6"/></>,
-    <><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></>,
-    <><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></>,
-    <><path d="M4 6h16v12H4z"/><path d="m7 15 3-3 2 2 5-5"/></>,
+    <>
+      <rect x="3" y="4" width="18" height="15" rx="2" />
+      <path d="M7 8h10M7 12h6M9 22h6" />
+    </>,
+    <>
+      <path d="M5 4h14a2 2 0 0 1 2 2v12H3V6a2 2 0 0 1 2-2Z" />
+      <path d="M8 22h8M12 18v4M7 9h10" />
+    </>,
+    <>
+      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+      <path d="m3 7 5-3 5 5 7-6" />
+    </>,
+    <>
+      <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" />
+    </>,
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 12h8M12 8v8" />
+    </>,
+    <>
+      <path d="M4 6h16v12H4z" />
+      <path d="m7 15 3-3 2 2 5-5" />
+    </>,
   ];
 
   return (
@@ -144,7 +171,7 @@ export default function ServicesPage() {
     <main className="services-page">
       <SiteHeader />
 
-<section className="services-hero">
+      <section className="services-hero">
         <div className="services-hero-top reveal">
           <p className="eyebrow">Servicios · LearciNet</p>
           <h1>
