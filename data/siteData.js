@@ -134,10 +134,10 @@ export const siteData = {
 
   contact: {
     email: "contacto@learcinet.com",
-    phone: "+52 55 0000 0000",
+    phone: "+52 5513681451",
     location: "Ciudad de México, México",
     schedule: "Lunes a viernes · 9:00 a 18:00",
     // Sustituye el número por el real, con código de país y sin espacios.
-    whatsapp: "https://wa.me/5210000000000?text=Hola%20LearciNet,%20quiero%20cotizar%20un%20proyecto.",
+    whatsapp: "https://wa.me/525513681451?text=Hola%20LearciNet,%20quiero%20cotizar%20un%20proyecto.",
   },
 };
