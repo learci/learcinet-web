@@ -1,33 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { siteData } from "@/data/siteData";
-import SiteHeader from "@/components/SiteHeader";
-import ShapeGrid from "@/components/ShapeGrid";
-
-function ArrowUpRight({ size = 18 }) {
+export default function Home() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-
-function ServiceIcon({ index }) {
-  const icons = [
-    <><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></>,
-    <><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/><path d="M8 7h8M8 11h8M8 15h5"/></>,
-    <><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></>,
-    <><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></>,
-    <><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></>,
-    <><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="8"/></>,
-  ];
-  return (
-    <svg className="service-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        {icons[index % icons.length]}
-      </g>
-    </svg>
+    <main>
+      <h1>Prueba de compilación</h1>
+      <p>Si esta página funciona, el error viene de otro componente.</p>
+    </main>
   );
 }
 
@@ -96,15 +74,7 @@ function Services() {
   return (
     <section className="section section-dark services-home-section" id="servicios">
       <div className="services-shapegrid-bg" aria-hidden="true">
-        <ShapeGrid
-          direction="diagonal"
-          speed={0.25}
-          squareSize={42}
-          borderColor="rgba(255,255,255,0.09)"
-          hoverFillColor="#D8FF44"
-          shape="hexagon"
-          hoverTrailAmount={8}
-        />
+        {/* ShapeGrid removed temporarily for build isolation */}
       </div>
       <div className="services-home-overlay" aria-hidden="true" />
       <div className="services-home-content">
