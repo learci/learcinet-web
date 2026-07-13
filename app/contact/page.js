@@ -3,16 +3,16 @@ import { siteData } from "@/data/siteData";
 
 function ContactCard({ title, value, description, href, children }) {
   return (
-    <article className="contact-card">
+    <article className="contact-card-v2">
       <h3>{title}</h3>
       {description && <p>{description}</p>}
       {value && <strong>{value}</strong>}
       {href ? (
-        <a className="contact-link" href={href} target="_blank" rel="noreferrer">
+        <a className="contact-link-v2" href={href} target="_blank" rel="noreferrer">
           {children || "Abrir"}
         </a>
       ) : (
-        children && <div className="contact-meta">{children}</div>
+        children && <div className="contact-meta-v2">{children}</div>
       )}
     </article>
   );
