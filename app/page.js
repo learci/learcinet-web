@@ -97,6 +97,7 @@ function Hero() {
         <span>DESARROLLO</span>
         <span>AUTOMATIZACIÓN</span>
         <span>ANALÍTICA</span>
+        <span>APLICACIONES</span>
       </div>
     </section>
   );
