@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { siteData } from "@/data/siteData";
 
 function ArrowUpRight({ size = 18 }) {
@@ -270,29 +271,6 @@ function Contact() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-top">
-        <a href="#inicio" className="logo footer-logo">
-          <span className="logo-mark">L</span>
-          <span>LearciNet</span>
-        </a>
-        <p>Diseño, tecnología y datos para convertir ideas en soluciones útiles.</p>
-        <div className="footer-links">
-          {siteData.navigation.map((item) => (
-            <a href={item.href} key={item.href}>{item.label}</a>
-          ))}
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} LearciNet.</span>
-        <span>Hecho en México.</span>
-      </div>
-    </footer>
-  );
-}
-
 export default function Home() {
   useEffect(() => {
     const elements = document.querySelectorAll(".reveal");
@@ -319,7 +297,7 @@ export default function Home() {
         <Pricing />
         <Contact />
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

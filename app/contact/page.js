@@ -1,4 +1,5 @@
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { siteData } from "@/data/siteData";
 
 function ContactCard({ title, value, description, href, children }) {
@@ -17,6 +18,12 @@ function ContactCard({ title, value, description, href, children }) {
     </article>
   );
 }
+
+export const metadata = {
+  title: "Contacto",
+  description: "Contacta a LearciNet para proyectos digitales, automatización y LearciNet Workspace.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return (
@@ -97,6 +104,7 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

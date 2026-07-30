@@ -2,9 +2,17 @@ import "./globals.css";
 
 export const metadata = {
   metadataBase: new URL("https://learcinet.com"),
-  title: "LearciNet | Estudio Digital ॐ NPM",
+  title: { default: "LearciNet | Soluciones digitales", template: "%s" },
   description:
-    "Diseño web, automatización, dashboards, soporte tecnológico y soluciones digitales para empresas y emprendedores.",
+    "Diseño web, automatización, analítica y LearciNet Workspace para empresas y profesionales.",
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: "https://learcinet.com",
+    siteName: "LearciNet",
+    title: "LearciNet | Soluciones digitales",
+    description: "Diseño web, automatización, analítica y herramientas empresariales en la nube.",
+  },
   alternates: {
     canonical: "/",
   },
