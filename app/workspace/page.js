@@ -28,7 +28,10 @@ export default function WorkspacePage() {
             <p className="eyebrow">LearciNet Workspace</p>
             <h1>Procesos digitales administrados desde un solo lugar.</h1>
             <p>Una plataforma empresarial en la nube diseñada para ayudar a organizaciones y profesionales a organizar usuarios, comunicaciones, automatizaciones e indicadores.</p>
-            <div className="hero-actions"><a className="button button-primary" href="/contact">Solicitar información</a><a className="text-link" href="/privacy">Consultar privacidad</a></div>
+            <div className="hero-actions">
+            <a className="button button-primary" href="/contact">Solicitar información</a>
+            <a className="button button-primary" href="https://workspace.learcinet.com/login">Ingresa a LearciNet Workspace</a>
+            <a className="text-link" href="/privacy">Consultar privacidad</a></div>
           </div>
           <div className="workspace-panel" aria-label="Vista conceptual de LearciNet Workspace"><span>WORKSPACE</span><strong>Control, productividad y seguridad.</strong><div className="workspace-bars"><i/><i/><i/></div></div>
         </section>
