@@ -87,6 +87,33 @@ export default function WorkspacePage() {
             </article>
           </div>
         </section>
+        <section className="section workspace-video-section" aria-labelledby="smart-mail-video-title">
+          <div className="workspace-video-copy">
+            <p className="eyebrow light">Smart Mail en acción</p>
+            <h2 id="smart-mail-video-title">Conoce Smart Mail en 40 segundos.</h2>
+            <p>Descubre cómo convertir correos individuales en campañas profesionales, crear cada envío mediante un flujo guiado y consultar resultados útiles para mejorar tus comunicaciones.</p>
+            <div className="workspace-video-points" aria-label="Beneficios mostrados en el video">
+              <span>Creación guiada</span>
+              <span>Control y trazabilidad</span>
+              <span>Indicadores de campaña</span>
+            </div>
+            <a className="button button-light" href="https://workspace.learcinet.com/login">Crear cuenta y probar Smart Mail <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className="workspace-video-device">
+            <div className="workspace-video-device-top" aria-hidden="true"><i/><span>SMART MAIL</span><i/></div>
+            <video
+              className="workspace-video"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/media/smart-mail-poster.webp"
+              aria-label="Video promocional de LearciNet Smart Mail"
+            >
+              <source src="/media/smart-mail-demo.mp4" type="video/mp4" />
+              Tu navegador no puede reproducir este video.
+            </video>
+          </div>
+        </section>
         <section className="section workspace-features"><div className="section-heading"><div><p className="eyebrow">Funcionalidades</p><h2>Una base modular para operar y crecer.</h2></div><p>Centraliza herramientas empresariales y habilita nuevos módulos conforme evolucionan tus procesos.</p></div><div className="workspace-grid">{features.map((feature, index)=><article key={feature}><span>0{index+1}</span><h3>{feature}</h3></article>)}</div></section>
         <section className="section workspace-google"><div><p className="eyebrow light">Inicio de sesión con Google</p><h2>Acceso simple y protegido.</h2><p>LearciNet Workspace utiliza Google Sign-In exclusivamente para autenticar usuarios y proteger el acceso a cada Workspace. No publicamos información personal ni utilizamos cuentas de Google con fines publicitarios.</p></div><a className="button button-light" href="/privacy">Ver Política de Privacidad</a></section>
       </main>
