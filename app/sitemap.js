@@ -1,6 +1,6 @@
 export default function sitemap() {
   const baseUrl = "https://learcinet.com";
-  return ["", "/services", "/workspace", "/contact", "/privacy", "/terms"].map((path) => ({
+  return ["", "/services", "/workspace", "/recomendaciones", "/contact", "/privacy", "/terms"].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: path === "" ? "weekly" : "monthly",

@@ -2,6 +2,7 @@ export const siteData = {
   navigation: [
     { label: "Servicios", href: "/services" },
     { label: "Workspace", href: "/workspace" },
+    { label: "Recomendaciones", href: "/recomendaciones" },
     { label: "Proyectos", href: "/#proyectos" },
     { label: "Proceso", href: "/#proceso" },
     { label: "Planes", href: "/#planes" },
