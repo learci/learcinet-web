@@ -84,6 +84,93 @@ test("descarta productos defectuosos sin perder los válidos", () => {
   assert.equal(result.discardedProducts, 1);
 });
 
+
+test("envía filtros públicos normalizados a la API", async () => {
+  let requestedUrl = null;
+
+  const fetchImpl = async (url) => {
+    requestedUrl = new URL(url);
+
+    return {
+      ok: true,
+      json: async () => ({
+        ok: true,
+        apiVersion: "v1",
+        data: {
+          products: [],
+          pagination: {
+            page: 2,
+            pageSize: 12,
+            pageCount: 2,
+            total: 13,
+          },
+        },
+      }),
+    };
+  };
+
+  const result = await getAffiliatePublicCatalog({
+    page: 2,
+    q: "  ninja  ",
+    category: "  Licuadoras  ",
+    offer: "discount",
+    sort: "price-asc",
+    fetchImpl,
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(requestedUrl.searchParams.get("page"), "2");
+  assert.equal(requestedUrl.searchParams.get("q"), "ninja");
+  assert.equal(
+    requestedUrl.searchParams.get("category"),
+    "Licuadoras"
+  );
+  assert.equal(
+    requestedUrl.searchParams.get("offer"),
+    "discount"
+  );
+  assert.equal(
+    requestedUrl.searchParams.get("sort"),
+    "price-asc"
+  );
+});
+
+test("conserva la petición compatible cuando no hay filtros", async () => {
+  let requestedUrl = null;
+
+  const fetchImpl = async (url) => {
+    requestedUrl = new URL(url);
+
+    return {
+      ok: true,
+      json: async () => ({
+        ok: true,
+        apiVersion: "v1",
+        data: {
+          products: [],
+          pagination: {
+            page: 1,
+            pageSize: 12,
+            pageCount: 1,
+            total: 0,
+          },
+        },
+      }),
+    };
+  };
+
+  const result = await getAffiliatePublicCatalog({
+    fetchImpl,
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(requestedUrl.searchParams.get("page"), "1");
+  assert.equal(requestedUrl.searchParams.has("q"), false);
+  assert.equal(requestedUrl.searchParams.has("category"), false);
+  assert.equal(requestedUrl.searchParams.has("offer"), false);
+  assert.equal(requestedUrl.searchParams.has("sort"), false);
+});
+
 test("rechaza un contrato incompatible", () => {
   assert.equal(
     parseAffiliatePublicCatalog({
