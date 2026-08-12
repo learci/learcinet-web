@@ -3,10 +3,15 @@ import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import {
+  buildAffiliateRecommendationAnchor,
+  buildLearciNetRecommendationUrl,
+} from "@/lib/affiliate-share";
+import {
   formatAffiliatePrice,
   getAffiliatePublicCatalog,
 } from "@/lib/affiliate-public-catalog";
 
+import ProductShare from "./ProductShare";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -120,9 +125,21 @@ function ProductCard({ product }) {
     product.originalPriceCents !== null &&
     product.originalPriceCents >
       product.priceCents;
+  const shareAnchor =
+    buildAffiliateRecommendationAnchor(
+      product.id
+    );
+  const shareUrl =
+    buildLearciNetRecommendationUrl({
+      productId: product.id,
+      productName: product.name,
+    });
 
   return (
-    <article className={styles.productCard}>
+    <article
+      id={shareAnchor}
+      className={styles.productCard}
+    >
       <div className={styles.imageArea}>
         {product.featured && (
           <span
@@ -214,6 +231,12 @@ function ProductCard({ product }) {
           Ver producto
           <ArrowUpRight />
         </a>
+
+        <ProductShare
+          name={product.name}
+          price={price}
+          url={shareUrl}
+        />
       </div>
     </article>
   );
