@@ -1,0 +1,1237 @@
+.section {
+  --form-accent: #79e9ff;
+  --form-blue: #58b9ff;
+  --form-violet: #9d83ff;
+  --form-bg: #060a14;
+  --form-surface: #0b1322;
+  --form-ink: #f0f4ff;
+  --form-muted: #9eabc1;
+  --form-line: rgba(165, 190, 230, 0.16);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding-block: 115px;
+
+  border-block: 1px solid var(--form-line);
+
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(95, 87, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 8% 80%,
+      rgba(70, 198, 255, 0.06),
+      transparent 32%
+    ),
+    #080e1b;
+
+  color: var(--form-ink);
+}
+
+.container {
+  position: relative;
+  z-index: 3;
+
+  width: min(calc(100% - 96px), 1280px);
+
+  margin-inline: auto;
+}
+
+.backgroundGrid {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  opacity: 0.22;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(65, 105, 154, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65, 105, 154, 0.18) 1px, transparent 1px);
+
+  background-size: 72px 72px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 8%,
+      transparent 72%
+    );
+}
+
+.glowOne,
+.glowTwo {
+  position: absolute;
+  z-index: -2;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(18px);
+}
+
+.glowOne {
+  width: 520px;
+  height: 520px;
+
+  right: -190px;
+  top: 80px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(121, 233, 255, 0.08),
+      transparent 70%
+    );
+}
+
+.glowTwo {
+  width: 420px;
+  height: 420px;
+
+  left: -180px;
+  bottom: -80px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(145, 111, 255, 0.07),
+      transparent 70%
+    );
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading {
+  display: grid;
+
+  grid-template-columns: 1.3fr 0.75fr;
+
+  gap: 80px;
+  align-items: end;
+
+  margin-bottom: 52px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0 0 20px;
+
+  color: #c9d7ed;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  color: var(--form-accent);
+}
+
+.heading h2 {
+  margin: 0;
+
+  color: var(--form-ink);
+
+  font-size: clamp(2.6rem, 4.8vw, 4.4rem);
+  font-weight: 550;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+
+.heading h2 span {
+  background:
+    linear-gradient(
+      100deg,
+      #9cf1ff,
+      #58b9ff 60%,
+      #a199ff
+    );
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingDescription {
+  max-width: 390px;
+
+  margin: 0;
+
+  color: var(--form-muted);
+
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* =========================================================
+   SHELL
+========================================================= */
+
+.formShell {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.65fr);
+
+  overflow: hidden;
+
+  border: 1px solid rgba(121, 233, 255, 0.25);
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12, 21, 37, 0.96),
+      rgba(7, 13, 25, 0.98)
+    );
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.24),
+    0 0 45px rgba(70, 183, 255, 0.035);
+}
+
+.formShell::before {
+  content: "";
+
+  position: absolute;
+  z-index: 10;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  padding: 1px;
+
+  pointer-events: none;
+
+  background:
+    conic-gradient(
+      from var(--contact-angle),
+      transparent 0%,
+      transparent 36%,
+      rgba(121, 233, 255, 0.04) 43%,
+      rgba(121, 233, 255, 0.85) 49%,
+      rgba(156, 129, 255, 0.75) 52%,
+      rgba(121, 233, 255, 0.04) 58%,
+      transparent 65%,
+      transparent 100%
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  animation: borderTravel 8s linear infinite;
+}
+
+/* =========================================================
+   SCANNER
+========================================================= */
+
+.scanner {
+  position: absolute;
+  z-index: 9;
+
+  top: -30%;
+  left: -25%;
+
+  width: 23%;
+  height: 170%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: skewX(-17deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(121, 233, 255, 0.025),
+      rgba(121, 233, 255, 0.07),
+      rgba(255, 255, 255, 0.025),
+      transparent
+    );
+
+  animation: scannerMove 9s ease-in-out infinite;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+
+  padding: 36px 38px;
+}
+
+.formBlock {
+  padding: 0 0 36px;
+
+  margin: 0 0 36px;
+
+  border-bottom: 1px solid var(--form-line);
+}
+
+.stepLabel {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 24px;
+}
+
+.stepLabel > span {
+  display: grid;
+
+  width: 31px;
+  height: 31px;
+
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  border: 1px solid #38536e;
+  border-radius: 50%;
+
+  color: var(--form-accent);
+
+  font: 0.7rem ui-monospace, monospace;
+}
+
+.stepLabel p {
+  margin: 0;
+
+  color: #c9d7ed;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fieldsTwo {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.field > span {
+  color: #b8c7db;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.field > span b {
+  color: var(--form-accent);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+
+  border: 1px solid #263a55;
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    rgba(7, 16, 30, 0.88);
+
+  color: #eaf1fc;
+
+  font: inherit;
+  font-size: 0.88rem;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.field input,
+.field select {
+  min-height: 51px;
+
+  padding: 0 15px;
+}
+
+.field textarea {
+  min-height: 175px;
+
+  padding: 15px;
+
+  resize: vertical;
+
+  line-height: 1.7;
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field select option {
+  background: #0b1424;
+  color: #eef5ff;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #63758f;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: #385671;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  transform: translateY(-1px);
+
+  border-color: var(--form-accent);
+
+  background: #09172a;
+
+  box-shadow:
+    0 0 0 3px rgba(121, 233, 255, 0.055),
+    0 0 22px rgba(68, 190, 255, 0.045);
+}
+
+.messageField {
+  margin-top: 20px;
+}
+
+.error {
+  color: #ff9caa;
+
+  font-size: 0.7rem;
+}
+
+.characterCount {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color: #72839c;
+
+  font-size: 0.68rem;
+}
+
+/* =========================================================
+   REQUEST TYPE
+========================================================= */
+
+.requestType {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.choice,
+.smallChoice {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.choice input,
+.smallChoice input {
+  position: absolute;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice span {
+  min-height: 49px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 13px;
+
+  border: 1px solid #293b55;
+  border-radius: 8px;
+
+  background: #0a1424;
+
+  color: #91a2ba;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-align: center;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.choice:hover span {
+  border-color: #415a77;
+
+  color: #dce8f8;
+}
+
+.choiceActive span {
+  border-color: rgba(121, 233, 255, 0.55);
+
+  background:
+    linear-gradient(
+      140deg,
+      rgba(121, 233, 255, 0.12),
+      rgba(80, 130, 255, 0.055)
+    );
+
+  color: #bff5ff;
+
+  box-shadow:
+    inset 0 0 20px rgba(121, 233, 255, 0.03);
+}
+
+/* =========================================================
+   CONTACT PREFERENCE
+========================================================= */
+
+.contactPreference {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.smallChoice {
+  min-height: 51px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #293b55;
+  border-radius: 9px;
+
+  background: #0a1424;
+
+  color: #93a5be;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.smallChoiceActive {
+  border-color: rgba(121, 233, 255, 0.52);
+
+  background:
+    rgba(121, 233, 255, 0.08);
+
+  color: #bff5ff;
+}
+
+/* =========================================================
+   PRIVACY / ACTIONS
+========================================================= */
+
+.formFooter {
+  padding-bottom: 4px;
+}
+
+.privacy {
+  display: grid;
+
+  grid-template-columns: 22px 1fr;
+
+  gap: 11px;
+
+  align-items: start;
+
+  cursor: pointer;
+
+  color: #8596ae;
+
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.privacy input {
+  position: absolute;
+
+  opacity: 0;
+}
+
+.checkBox {
+  display: grid;
+
+  width: 19px;
+  height: 19px;
+
+  place-items: center;
+
+  margin-top: 1px;
+
+  border: 1px solid #3a4d66;
+  border-radius: 5px;
+
+  background: #081220;
+
+  color: transparent;
+
+  font-size: 0.7rem;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.privacy input:checked + .checkBox {
+  border-color: var(--form-accent);
+
+  background: var(--form-accent);
+
+  color: #06101c;
+}
+
+.privacy a {
+  color: #a5dff2;
+}
+
+.privacy a:hover {
+  color: var(--form-accent);
+}
+
+.privacyError {
+  display: block;
+
+  margin: 8px 0 0 33px;
+
+  color: #ff9caa;
+
+  font-size: 0.7rem;
+}
+
+.formActions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 27px;
+}
+
+.submitButton,
+.whatsappButton {
+  min-height: 52px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 11px;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submitButton {
+  border: 1px solid #96ebff;
+
+  background: #86e6ff;
+
+  color: #071323;
+
+  box-shadow:
+    0 8px 28px rgba(68, 197, 255, 0.08);
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+
+  background: #b3f1ff;
+
+  box-shadow:
+    0 12px 34px rgba(68, 197, 255, 0.17);
+}
+
+.whatsappButton {
+  border: 1px solid #2e5366;
+
+  background: #0d1a2b;
+
+  color: #bcd0e5;
+}
+
+.whatsappButton:hover {
+  transform: translateY(-2px);
+
+  border-color: #68d8c0;
+
+  color: #82efd0;
+}
+
+.formMessage,
+.formMessageError {
+  margin: 18px 0 0;
+
+  font-size: 0.75rem;
+}
+
+.formMessage {
+  color: #79dfca;
+}
+
+.formMessageError {
+  color: #ff9caa;
+}
+
+/* =========================================================
+   LIVE BRIEF PANEL
+========================================================= */
+
+.brief {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 30px;
+
+  border-left: 1px solid var(--form-line);
+
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(113, 89, 255, 0.14),
+      transparent 30%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(15, 25, 48, 0.96),
+      rgba(7, 12, 27, 0.99)
+    );
+}
+
+.brief::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.24;
+
+  background-image:
+    linear-gradient(rgba(106, 142, 194, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(106, 142, 194, 0.11) 1px, transparent 1px);
+
+  background-size: 46px 46px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at 80% 20%,
+      black,
+      transparent 65%
+    );
+}
+
+.briefTop,
+.briefContent,
+.summary,
+.progress {
+  position: relative;
+  z-index: 3;
+}
+
+.briefTop {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #8093ad;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.12em;
+}
+
+.liveStatus {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #89e8d0;
+}
+
+.liveStatus i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  box-shadow: 0 0 10px currentColor;
+}
+
+.briefOrb {
+  position: relative;
+
+  width: 190px;
+  height: 190px;
+
+  align-self: center;
+
+  margin: 45px 0 35px;
+
+  border: 1px solid rgba(125, 158, 255, 0.15);
+  border-radius: 50%;
+
+  animation: orbRotate 14s linear infinite;
+}
+
+.briefOrb::before,
+.briefOrb::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.briefOrb::before {
+  inset: 28px;
+
+  border: 1px solid rgba(121, 233, 255, 0.22);
+
+  transform: rotate(34deg) scaleY(0.42);
+}
+
+.briefOrb::after {
+  inset: 2px;
+
+  border: 1px solid rgba(161, 145, 255, 0.14);
+
+  transform: rotate(-35deg) scaleY(0.37);
+}
+
+.briefOrb > span {
+  position: absolute;
+
+  width: 57px;
+  height: 57px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 28% 25%,
+      #ebfdff,
+      #82ecff 18%,
+      #428eff 55%,
+      #765cec
+    );
+
+  box-shadow:
+    0 0 22px rgba(121, 233, 255, 0.65),
+    0 0 65px rgba(80, 129, 255, 0.34);
+}
+
+.briefOrb > i {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  top: 18px;
+  left: 89px;
+
+  border-radius: 50%;
+
+  background: #8df0ff;
+
+  box-shadow:
+    0 0 9px #8df0ff;
+}
+
+.briefIndex {
+  margin: 0 0 13px;
+
+  color: #768aa7;
+
+  font: 0.65rem ui-monospace, monospace;
+
+  letter-spacing: 0.11em;
+}
+
+.briefContent h3 {
+  margin: 0;
+
+  color: #edf4ff;
+
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 470;
+
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.briefContent h3 span {
+  color: #9a8aff;
+}
+
+.briefContent > p:last-child {
+  margin: 20px 0 0;
+
+  color: #91a1ba;
+
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.summary {
+  margin: 28px 0 0;
+
+  border-top: 1px solid var(--form-line);
+}
+
+.summary > div {
+  display: grid;
+
+  grid-template-columns: 90px 1fr;
+
+  gap: 15px;
+
+  padding: 13px 0;
+
+  border-bottom: 1px solid var(--form-line);
+}
+
+.summary dt,
+.summary dd {
+  margin: 0;
+
+  font-size: 0.68rem;
+}
+
+.summary dt {
+  color: #72849f;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.summary dd {
+  overflow-wrap: anywhere;
+
+  color: #bdcbe0;
+
+  text-align: right;
+}
+
+.progress {
+  margin-top: auto;
+
+  padding-top: 28px;
+}
+
+.progressTop {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  color: #778aa5;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.1em;
+}
+
+.progressTop strong {
+  color: var(--form-accent);
+
+  font-size: 0.7rem;
+}
+
+.progressTrack {
+  position: relative;
+
+  height: 3px;
+
+  margin-top: 12px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: #1a2a40;
+}
+
+.progressTrack span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--form-accent),
+      var(--form-blue),
+      var(--form-violet)
+    );
+
+  box-shadow:
+    0 0 12px rgba(121, 233, 255, 0.55);
+
+  transition: width 0.35s ease;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@property --contact-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes borderTravel {
+  to {
+    --contact-angle: 360deg;
+  }
+}
+
+@keyframes scannerMove {
+  0%,
+  72% {
+    left: -30%;
+    opacity: 0;
+  }
+
+  76% {
+    opacity: 0.55;
+  }
+
+  96% {
+    opacity: 0.25;
+  }
+
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@keyframes orbRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1020px) {
+  .formShell {
+    grid-template-columns: 1fr;
+  }
+
+  .brief {
+    min-height: 560px;
+
+    border-top: 1px solid var(--form-line);
+    border-left: 0;
+  }
+
+  .briefOrb {
+    width: 170px;
+    height: 170px;
+
+    margin-block: 35px;
+  }
+}
+
+@media (max-width: 820px) {
+  .container {
+    width: min(calc(100% - 48px), 1280px);
+  }
+
+  .section {
+    padding-block: 90px;
+  }
+
+  .heading {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .form {
+    padding: 30px;
+  }
+
+  .requestType {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .container {
+    width: min(calc(100% - 32px), 1280px);
+  }
+
+  .form {
+    padding: 24px 20px;
+  }
+
+  .brief {
+    padding: 24px 20px;
+  }
+
+  .fieldsTwo {
+    grid-template-columns: 1fr;
+  }
+
+  .requestType {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .submitButton,
+  .whatsappButton {
+    width: 100%;
+  }
+
+  .characterCount {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .requestType {
+    grid-template-columns: 1fr;
+  }
+
+  .contactPreference {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formShell::before,
+  .scanner,
+  .briefOrb {
+    animation: none;
+  }
+
+  .field input,
+  .field select,
+  .field textarea,
+  .choice span,
+  .smallChoice,
+  .submitButton,
+  .whatsappButton {
+    transition: none;
+  }
+}

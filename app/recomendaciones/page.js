@@ -682,10 +682,10 @@ export default async function RecommendationsPage({
       "recommended";
 
   return (
-    <>
-      <SiteHeader />
+  <div className={styles.page}>
+    <SiteHeader />
 
-      <main className={styles.page}>
+    <main>
         <section
           className={styles.hero}
         >
@@ -871,6 +871,6 @@ export default async function RecommendationsPage({
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }
