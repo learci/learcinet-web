@@ -52,11 +52,18 @@ const initialForm = {
   message: "",
   preferredContact: "WhatsApp",
   privacy: false,
+  website: "",
 };
 
 function Arrow() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M6 18 18 6M6 6h12v12"
         stroke="currentColor"
@@ -70,7 +77,13 @@ function Arrow() {
 
 function SendIcon() {
   return (
-    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width="23"
+      height="23"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="m3 11 18-8-8 18-2.4-7.6L3 11Z"
         stroke="currentColor"
@@ -183,7 +196,7 @@ export default function ContactForm() {
     ].join("\n");
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (!validate()) {
@@ -191,28 +204,57 @@ export default function ContactForm() {
       return;
     }
 
-    setStatus("preparing");
+    setStatus("sending");
 
-    const subject = encodeURIComponent(
-      `${form.requestType} · ${form.service} · ${form.name}`
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          phone: form.phone,
+          requestType: form.requestType,
+          service: form.service,
+          budget: form.budget,
+          timeline: form.timeline,
+          message: form.message,
+          preferredContact: form.preferredContact,
+          website: form.website,
+        }),
+      });
 
-    const body = encodeURIComponent(buildRequest());
+      const data = await response.json();
 
-    window.location.href =
-      `mailto:${siteData.contact.email}?subject=${subject}&body=${body}`;
+      if (!response.ok || !data.ok) {
+        console.error("Contact form error:", data);
+        setStatus("send-error");
+        return;
+      }
 
-    setStatus("prepared");
+      setStatus("sent");
+      setForm(initialForm);
+      setErrors({});
+    } catch (error) {
+      console.error("Contact request failed:", error);
+      setStatus("send-error");
+    }
   }
 
   function openWhatsApp() {
+    if (status === "sending") {
+      return;
+    }
+
     if (!validate()) {
       setStatus("error");
       return;
     }
 
     const message = encodeURIComponent(buildRequest());
-
     const separator = siteData.contact.whatsapp.includes("?") ? "&" : "?";
 
     window.open(
@@ -254,6 +296,29 @@ export default function ContactForm() {
           <div className={styles.scanner} aria-hidden="true" />
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
+              }}
+            >
+              <label>
+                Sitio web
+                <input
+                  type="text"
+                  name="website"
+                  value={form.website}
+                  onChange={updateField}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </label>
+            </div>
+
             <section className={styles.formBlock}>
               <StepLabel number="01">Datos de contacto</StepLabel>
 
@@ -262,6 +327,7 @@ export default function ContactForm() {
                   <span>
                     Nombre <b>*</b>
                   </span>
+
                   <input
                     name="name"
                     value={form.name}
@@ -269,6 +335,7 @@ export default function ContactForm() {
                     placeholder="¿Cómo te llamas?"
                     autoComplete="name"
                   />
+
                   {errors.name && (
                     <small className={styles.error}>{errors.name}</small>
                   )}
@@ -276,6 +343,7 @@ export default function ContactForm() {
 
                 <label className={styles.field}>
                   <span>Empresa / proyecto</span>
+
                   <input
                     name="company"
                     value={form.company}
@@ -289,6 +357,7 @@ export default function ContactForm() {
                   <span>
                     Correo <b>*</b>
                   </span>
+
                   <input
                     name="email"
                     type="email"
@@ -297,6 +366,7 @@ export default function ContactForm() {
                     placeholder="nombre@empresa.com"
                     autoComplete="email"
                   />
+
                   {errors.email && (
                     <small className={styles.error}>{errors.email}</small>
                   )}
@@ -304,6 +374,7 @@ export default function ContactForm() {
 
                 <label className={styles.field}>
                   <span>WhatsApp / teléfono</span>
+
                   <input
                     name="phone"
                     type="tel"
@@ -334,6 +405,7 @@ export default function ContactForm() {
                       checked={form.requestType === type}
                       onChange={updateField}
                     />
+
                     <span>{type}</span>
                   </label>
                 ))}
@@ -342,6 +414,7 @@ export default function ContactForm() {
               <div className={styles.fieldsTwo}>
                 <label className={styles.field}>
                   <span>Servicio de interés</span>
+
                   <select
                     name="service"
                     value={form.service}
@@ -357,6 +430,7 @@ export default function ContactForm() {
 
                 <label className={styles.field}>
                   <span>Presupuesto estimado</span>
+
                   <select
                     name="budget"
                     value={form.budget}
@@ -378,6 +452,7 @@ export default function ContactForm() {
               <div className={styles.fieldsTwo}>
                 <label className={styles.field}>
                   <span>Fecha objetivo</span>
+
                   <select
                     name="timeline"
                     value={form.timeline}
@@ -411,6 +486,7 @@ export default function ContactForm() {
                           checked={form.preferredContact === method}
                           onChange={updateField}
                         />
+
                         {method}
                       </label>
                     ))}
@@ -477,14 +553,23 @@ export default function ContactForm() {
                   type="button"
                   className={styles.whatsappButton}
                   onClick={openWhatsApp}
+                  disabled={status === "sending"}
                 >
                   Enviar por WhatsApp
                   <Arrow />
                 </button>
 
-                <button type="submit" className={styles.submitButton}>
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={status === "sending"}
+                >
                   <SendIcon />
-                  Preparar solicitud por correo
+
+                  {status === "sending"
+                    ? "Enviando solicitud..."
+                    : "Enviar solicitud"}
+
                   <Arrow />
                 </button>
               </div>
@@ -495,16 +580,22 @@ export default function ContactForm() {
                 </p>
               )}
 
-              {status === "preparing" && (
+              {status === "sending" && (
                 <p className={styles.formMessage}>
-                  Preparando tu solicitud...
+                  Enviando tu solicitud de forma segura...
                 </p>
               )}
 
-              {status === "prepared" && (
+              {status === "sent" && (
                 <p className={styles.formMessage}>
-                  Se abrió tu aplicación de correo con la solicitud preparada.
-                  Revisa el mensaje y pulsa enviar.
+                  ✓ Solicitud enviada correctamente. Te contactaremos pronto.
+                </p>
+              )}
+
+              {status === "send-error" && (
+                <p className={styles.formMessageError}>
+                  No pudimos enviar tu solicitud en este momento. Intenta
+                  nuevamente o usa WhatsApp.
                 </p>
               )}
 
@@ -519,6 +610,7 @@ export default function ContactForm() {
           <aside className={styles.brief}>
             <div className={styles.briefTop}>
               <span>LEARCINET / BRIEF</span>
+
               <span className={styles.liveStatus}>
                 <i />
                 LISTO
